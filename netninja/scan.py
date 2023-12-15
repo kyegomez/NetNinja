@@ -67,7 +67,8 @@ def scanner(ip_range: str):
             f"IP: {device['ip']}, MAC: {device['mac']}, Hostname:"
             f" {device['hostname']}"
         )
-        
+
+
 out = scanner()
 print(out)
 
