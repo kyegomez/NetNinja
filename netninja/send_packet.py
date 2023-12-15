@@ -14,6 +14,6 @@ def send_packet(destination_ip):
 
 #
 
-for i in range(10000000):
-    out = send_packet()
-    print(out)
+# for i in range(10000000):
+#     out = send_packet()
+#     print(out)

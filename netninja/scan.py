@@ -59,43 +59,44 @@ def scanner(ip_range: str):
     Args:
     ip_range (str): IP address or range (e.g., '
     """
-    # Using the Scanner
-    network_range = ip_range  # Specify your network range here
-    devices = scan(network_range)
-
-    for device in devices:
-        device["hostname"] = get_hostname(device["ip"])
-        print(
-            f"IP: {device['ip']}, MAC: {device['mac']}, Hostname:"
-            f" {device['hostname']}"
-        )
-
-
-def scan_and_flood(ip_range):
-    """
-    Scan the network and flood all devices.
-
-    Args:
-        ip_range (str): IP address or range (e.g., '192.168.1.0/24')
-    """
-    # Scan the network
     devices = scan(ip_range)
 
-    # Get hostnames and print device info
     for device in devices:
         device["hostname"] = get_hostname(device["ip"])
         print(
             f"IP: {device['ip']}, MAC: {device['mac']}, Hostname:"
             f" {device['hostname']}"
         )
-
-    # Flood all devices
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        # Concurrently flood all devices on the network
-        executor.map(flood, devices)
+        
+out = scanner()
+print(out)
 
 
-def flood(device):
-    # Flood a single device
-    for i in range(10000000):
-        send_packet(device["ip"])
+# def scan_and_flood(ip_range):
+#     """
+#     Scan the network and flood all devices.
+
+#     Args:
+#         ip_range (str): IP address or range (e.g., '192.168.1.0/24')
+#     """
+#     # Scan the network
+#     devices = scan(ip_range)
+
+#     # Get hostnames and print device info
+#     for device in devices:
+#         device["hostname"] = get_hostname(device["ip"])
+#         print(
+#             f"IP: {device['ip']}, MAC: {device['mac']}, Hostname:"
+#             f" {device['hostname']}"
+#         )
+
+#     # Flood all devices
+#     with concurrent.futures.ThreadPoolExecutor() as executor:
+#         # Concurrently flood all devices on the network
+#         executor.map(flood, devices)
+
+
+# def flood(device):
+#     # Flood a single device
+#     for i in range(10000000):
+#         send_packet(device["ip"])
