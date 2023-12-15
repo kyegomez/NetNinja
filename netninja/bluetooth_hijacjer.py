@@ -2,8 +2,7 @@ import bluetooth
 
 
 def find_bluetooth_devices():
-    """Find  nearby Bluetooth devices.
-    """
+    """Find  nearby Bluetooth devices."""
     print("Searching for Bluetooth devices...")
     nearby_devices = bluetooth.discover_devices(lookup_names=True)
     print("Found {} devices.".format(len(nearby_devices)))
@@ -19,4 +18,4 @@ def find_bluetooth_devices():
             )
 
 
-find_bluetooth_devices()    
+find_bluetooth_devices()
